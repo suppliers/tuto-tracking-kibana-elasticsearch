@@ -8,17 +8,19 @@ function tracker() {
     tags = new Array();
   }
 
+  // Prepare data
+  var data = {
+    "userAgent": navigator.userAgent,
+    "platform": navigator.platform,
+    "host": location.host,
+    "currentPage": location.href,
+    "previousPage": location.origin,
+    "tags": tags
+  };
 
-  data = {"track":
-          {
-            "userAgent": navigator.userAgent,
-            "platform": navigator.platform,
-            "host": location.host,
-            "currentPage": location.href,
-            "previousPage": location.origin,
-            "tags": tags
-          }
-         };
-  return data;
+  // Send data to api using GET
+  (new Image).src = 'http://api.tracker.dev/?data=' + escape(JSON.stringify(data));
+
+  return ;
 }
-console.log(tracker());
+
