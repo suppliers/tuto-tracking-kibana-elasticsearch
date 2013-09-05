@@ -1,13 +1,4 @@
 <?php
-function json2curl($data) {
-    $json_data = json_decode($data);
-    $response = '';
-    foreach ($data as $key => $value) {
-        $response .= $key . '=' . $value;
-    }
-    return $response;
-}
-
 if (isset($_SERVER['HTTP_REFERER'], $_GET['data'])) {
     // Initialize cURL
     $cURL = curl_init();
@@ -18,7 +9,7 @@ if (isset($_SERVER['HTTP_REFERER'], $_GET['data'])) {
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POST => 1,
-        CURLOPT_POSTFIELDS => json2curl($data)
+        CURLOPT_POSTFIELDS => $data
     );
 
     // Set cURL options
