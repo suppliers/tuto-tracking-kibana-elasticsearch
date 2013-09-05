@@ -32,4 +32,3 @@ if (isset($_SERVER['HTTP_REFERER'], $_GET['data'])) {
 
     echo $result;
 }
-
